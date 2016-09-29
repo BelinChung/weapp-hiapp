@@ -1,0 +1,33 @@
+page {
+  background-color: #efeff4;
+}
+
+.wx-cells {
+  width: 100%;
+  margin-top: 45rpx;
+  font-size: 34rpx;
+  border-top: 1rpx solid #d9d9d9;
+  border-bottom: 1rpx solid #d9d9d9;
+  background-color: #fff;
+}
+
+.wx-cell {
+  padding: 20rpx 25rpx;
+  display: flex;
+  align-items: center;
+}
+
+.wx-cell-icon{
+  width: 56rpx;
+  height: 56rpx;
+}
+
+.wx-cell-text{
+  flex: 1;
+  margin-left: 30rpx;
+}
+
+.wx-cell-arrow{
+  width: 30rpx;
+  height: 30rpx;
+}

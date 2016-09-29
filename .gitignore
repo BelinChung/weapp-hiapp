@@ -1,0 +1,15 @@
+# OSX
+#
+.DS_Store
+
+# IJ
+#
+*.iml
+.idea
+
+# VS Code
+#
+.vscode
+
+/libs
+jsconfig.json

@@ -1,0 +1,51 @@
+.contacts {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-bottom: 30rpx;
+}
+
+.header{
+  width: 100%;
+  height: 60rpx;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  color: #8e8e93;
+}
+
+.contact-card{
+  background-color: #ffffff;
+}
+
+.contact-card-inner{
+  padding: 20rpx 20rpx 20rpx 0;  
+  margin-left: 20rpx; 
+  display: flex;
+  border-bottom: 1rpx solid #d9d9d9; 
+}
+
+.contact-avatar{
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #c8c8c8;
+}
+
+.contact-name{
+  display: flex;
+  flex: 1;
+  font-size: 35rpx;
+  margin-left: 30rpx;
+  align-items: center;
+}
+
+.contact-right{
+  display: flex;
+  align-items: center;
+}
+
+.contact-right-text{
+  font-size: 30rpx;
+  color: #808080;
+}
