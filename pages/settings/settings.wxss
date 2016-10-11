@@ -1,10 +1,3 @@
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
 .user-avatar {
   width: 130rpx;
   height: 130rpx;

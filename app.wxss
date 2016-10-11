@@ -2,6 +2,13 @@ page {
   background-color: #efeff4;
 }
 
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
 .wx-cells {
   width: 100%;
   margin-top: 45rpx;
@@ -30,4 +37,24 @@ page {
 .wx-cell-arrow{
   width: 30rpx;
   height: 30rpx;
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-rest-height {
+  flex: 1;
+  height: initial;
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-rest-width {
+  flex: 1;
+  width: initial;
 }

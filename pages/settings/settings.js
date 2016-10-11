@@ -3,12 +3,17 @@ Page({
   data:{
     userInfo: {}
   },
-  onLoad: function () {
+  onLoad: function() {
     var that = this
     app.getUserInfo(function(userInfo){
       that.setData({
         userInfo:userInfo
       })
+    })
+  },
+  navToAbout: function() {
+    wx.navigateTo({
+      url: '../about/about'
     })
   }
 })

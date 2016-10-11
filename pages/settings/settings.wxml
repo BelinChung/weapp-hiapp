@@ -24,7 +24,7 @@
     </view>
   </view>
   <view class="wx-cells">
-    <view class="wx-cell">
+    <view class="wx-cell" bindtap="navToAbout">
       <image class="wx-cell-icon" src="../../assets/about.png"></image>
       <text class="wx-cell-text">About</text>
       <image class="wx-cell-arrow" src="../../assets/right-gray.png"></image>

@@ -2,7 +2,8 @@
   "pages":[
     "pages/index/index",
     "pages/contacts/contacts",
-    "pages/settings/settings"
+    "pages/settings/settings",
+    "pages/about/about"
   ],
   "window":{
     "backgroundTextStyle":"light",
