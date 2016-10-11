@@ -15,5 +15,10 @@ Page({
     wx.navigateTo({
       url: '../about/about'
     })
+  },
+  navToFeedback: function() {
+    wx.navigateTo({
+      url: '../feedback/feedback'
+    })
   }
 })

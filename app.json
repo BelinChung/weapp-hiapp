@@ -3,13 +3,14 @@
     "pages/index/index",
     "pages/contacts/contacts",
     "pages/settings/settings",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/feedback/feedback"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#f7f7f8",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ff9630",
     "navigationBarTitleText": "HiApp",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#929292",

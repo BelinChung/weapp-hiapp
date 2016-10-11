@@ -10,7 +10,7 @@
     </view>
   </view>
   <view class="wx-cells">
-    <view class="wx-cell">
+    <view class="wx-cell" bindtap="navToFeedback">
       <image class="wx-cell-icon" src="../../assets/feedback.png"></image>
       <text class="wx-cell-text">Feedback</text>
       <image class="wx-cell-arrow" src="../../assets/right-gray.png"></image>
