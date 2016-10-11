@@ -10,6 +10,3 @@
 # VS Code
 #
 .vscode
-
-/libs
-jsconfig.json
