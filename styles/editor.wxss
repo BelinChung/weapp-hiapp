@@ -1,6 +1,5 @@
 .editor-container{
   width: 100%;
-  border-top: 1rpx solid #c4c4c4;
   border-bottom: 1rpx solid #c4c4c4;  
 }
 

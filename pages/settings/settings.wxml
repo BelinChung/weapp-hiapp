@@ -1,6 +1,6 @@
 <view class="container">
   <view class="wx-cells">
-    <view class="wx-cell">
+    <view class="wx-cell" bindtap="navToProfile">
       <image class="wx-cell-icon user-avatar" src="{{userInfo.avatarUrl}}"></image>
       <view class="user-info">
         <text class="user-info-text">{{userInfo.nickName}}</text>

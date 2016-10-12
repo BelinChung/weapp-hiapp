@@ -20,5 +20,10 @@ Page({
     wx.navigateTo({
       url: '../feedback/feedback'
     })
+  },
+  navToProfile: function() {
+    wx.navigateTo({
+      url: '../profile/profile'
+    })
   }
 })

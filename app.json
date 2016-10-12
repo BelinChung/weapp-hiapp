@@ -4,7 +4,8 @@
     "pages/contacts/contacts",
     "pages/settings/settings",
     "pages/about/about",
-    "pages/feedback/feedback"
+    "pages/feedback/feedback",
+    "pages/profile/profile"
   ],
   "window":{
     "backgroundTextStyle": "light",
