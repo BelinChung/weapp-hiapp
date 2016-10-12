@@ -1,27 +1,26 @@
-var app = getApp()
+let app = getApp()
 Page({
   data:{
     userInfo: {}
   },
-  onLoad: function() {
-    var that = this
-    app.getUserInfo(function(userInfo){
-      that.setData({
-        userInfo:userInfo
+  onLoad() {
+    app.getUserInfo(userInfo => {
+      this.setData({
+        userInfo: userInfo
       })
     })
   },
-  navToAbout: function() {
+  navToAbout() {
     wx.navigateTo({
       url: '../about/about'
     })
   },
-  navToFeedback: function() {
+  navToFeedback() {
     wx.navigateTo({
       url: '../feedback/feedback'
     })
   },
-  navToProfile: function() {
+  navToProfile() {
     wx.navigateTo({
       url: '../profile/profile'
     })

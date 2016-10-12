@@ -1,13 +1,12 @@
-var app = getApp()
+let app = getApp()
 Page({
   data:{
     userInfo: {}
   },
-  onLoad: function() {
-    var that = this
-    app.getUserInfo(function(userInfo){
+  onLoad() {
+    app.getUserInfo(userInfo => {
       userInfo.gender = userInfo.gender === 1 ? 'Male' : 'Female'
-      that.setData({
+      this.setData({
         userInfo: userInfo
       })
     })

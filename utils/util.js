@@ -1,12 +1,12 @@
 module.exports = {
-  getAvatarUrl: function(ID) {
+  getAvatarUrl(ID) {
     return 'http://lorempixel.com/68/68/people/' + ID
   },
-  timeFormat: function(ms){
+  timeFormat(ms) {
     ms = ms * 1000
-    var d_second,d_minutes, d_hours, d_days
-    var timeNow = new Date().getTime()
-    var d = (timeNow - ms)/1000
+    let d_second,d_minutes, d_hours, d_days
+    let timeNow = new Date().getTime()
+    let d = (timeNow - ms)/1000
     d_days = Math.round(d / (24 * 60 * 60))
     d_hours = Math.round(d / (60 * 60))
     d_minutes = Math.round(d / 60)
@@ -20,7 +20,7 @@ module.exports = {
     } else if (d_minutes <= 0 && d_second >= 0) {
       return i18n.global.just_now
     } else {
-      var s = new Date()
+      let s = new Date()
       s.setTime(ms)
       return (s.getFullYear() + '-' + f(s.getMonth() + 1) + '-' + f(s.getDate()) + ' '+ f(s.getHours()) + ':'+ f(s.getMinutes()))
     }

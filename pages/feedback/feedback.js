@@ -1,8 +1,8 @@
 Page({
-  onLoad: function() {
+  onLoad() {
     // TODO
   },
-  formSubmit: function() {
+  formSubmit() {
     
   }
 })

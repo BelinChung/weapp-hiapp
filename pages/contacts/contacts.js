@@ -1,35 +1,34 @@
-var util = require('../../utils/util.js')
-var ajax = require('../../network/ajax.js')
+let util = require('../../utils/util')
+let ajax = require('../../network/ajax')
 
 Page({
   data:{
     contacts: [],
     loading: false  
   },
-  onLoad: function() {
+  onLoad() {
     this.getContacts()
   },
-  getContacts: function() {
-    var _this = this
-    _this.setData({
+  getContacts() {
+    this.setData({
       loading: true
     })
     ajax({
         url: 'contacts.json',
-        success: function(res) {
-          _this.setData({
-            contacts: _this.formatContacts(res.data)
+        success: res => {
+          this.setData({
+            contacts: this.formatContacts(res.data)
           })
         },
-        complete: function() {
-          _this.setData({
+        complete: _ => {
+          this.setData({
             loading: false
           })
         }
     })
   },
-  formatContacts: function(items) {
-    items.forEach(function(item) {
+  formatContacts(items) {
+    items.forEach(item => {
       item.avatar = util.getAvatarUrl(item.avatar)
       return item
     })

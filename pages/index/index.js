@@ -1,44 +1,43 @@
-var app = getApp()
-var util = require('../../utils/util.js')
-var ajax = require('../../network/ajax.js')
+let app = getApp()
+let util = require('../../utils/util')
+let ajax = require('../../network/ajax')
 
 Page({
   data: {
     timeline: [],
     loading: false  
   },
-  onReady: function() {
+  onReady() {
     this.getTimeline()  
   },
-  getTimeline: function() {
-    var _this = this
-    _this.setData({
+  getTimeline() {
+    this.setData({
       loading: true
     })
     ajax({
         url: 'timeline.json',
-        success: function(res) {
-          var timeline = _this.formatTimeline(res.data)
-          _this.setData({
+        success: res => {
+          let timeline = this.formatTimeline(res.data)
+          this.setData({
             timeline: timeline
           })
         },
-        complete: function() {
-          _this.setData({
+        complete: _ => {
+          this.setData({
             loading: false
           })
         }
     })
   },
-  formatTimeline: function(items) {
-    items.forEach(function(item) {
+  formatTimeline(items) {
+    items.forEach(item => {
       item.avatar = util.getAvatarUrl(item.avatar)
       item.time = util.timeFormat(item.created_at)
       return item
     })
     return items
   },
-  previewImage: function(event) {
+  previewImage(event) {
     wx.previewImage({
       current: '', 
       urls: [event.target.dataset.originalPic]

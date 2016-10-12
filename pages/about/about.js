@@ -1,5 +1,5 @@
 Page({
-  onLoad: function() {
+  onLoad() {
     // TODO
   }
 })
