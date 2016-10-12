@@ -10,19 +10,10 @@ Page({
       })
     })
   },
-  navToAbout() {
+  navToPage(event) {
+    let route = event.currentTarget.dataset.route
     wx.navigateTo({
-      url: '../about/about'
-    })
-  },
-  navToFeedback() {
-    wx.navigateTo({
-      url: '../feedback/feedback'
-    })
-  },
-  navToProfile() {
-    wx.navigateTo({
-      url: '../profile/profile'
+      url: route
     })
   }
 })

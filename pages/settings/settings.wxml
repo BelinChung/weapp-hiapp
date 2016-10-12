@@ -1,6 +1,6 @@
 <view class="container">
   <view class="wx-cells">
-    <view class="wx-cell" bindtap="navToProfile">
+    <view class="wx-cell" data-route="../profile/profile" bindtap="navToPage">
       <image class="wx-cell-icon user-avatar" src="{{userInfo.avatarUrl}}"></image>
       <view class="user-info">
         <text class="user-info-text">{{userInfo.nickName}}</text>
@@ -10,7 +10,7 @@
     </view>
   </view>
   <view class="wx-cells">
-    <view class="wx-cell" bindtap="navToFeedback">
+    <view class="wx-cell" data-route="../feedback/feedback" bindtap="navToPage">
       <image class="wx-cell-icon" src="../../assets/feedback.png"></image>
       <text class="wx-cell-text">Feedback</text>
       <image class="wx-cell-arrow" src="../../assets/right-gray.png"></image>
@@ -24,7 +24,7 @@
     </view>
   </view>
   <view class="wx-cells">
-    <view class="wx-cell" bindtap="navToAbout">
+    <view class="wx-cell" data-route="../about/about" bindtap="navToPage">
       <image class="wx-cell-icon" src="../../assets/about.png"></image>
       <text class="wx-cell-text">About</text>
       <image class="wx-cell-arrow" src="../../assets/right-gray.png"></image>
