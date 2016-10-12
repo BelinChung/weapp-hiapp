@@ -5,7 +5,8 @@
     "pages/settings/settings",
     "pages/about/about",
     "pages/feedback/feedback",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/message/message"
   ],
   "window":{
     "backgroundTextStyle": "light",

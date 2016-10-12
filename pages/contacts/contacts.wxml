@@ -2,7 +2,7 @@
   <loading hidden="{{!loading}}">loading...</loading>
   <block wx:for="{{contacts}}">
     <view class="header flex-row" wx:if="{{item.header}}">{{item.header}}</view>
-    <view class="contact-card">
+    <view class="contact-card" data-name="{{item.nickname}}" bindtap="navToMessage">
       <view class="contact-card-inner flex-row">
         <image class="contact-avatar" src="{{item.avatar}}"></image>
         <view class="contact-name flex-row flex-rest-width">
