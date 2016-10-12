@@ -1,4 +1,4 @@
-var API_PATH = 'https://raw.githubusercontent.com/BelinChung/HiApp/master/src/api/'
+let API_PATH = 'https://raw.githubusercontent.com/BelinChung/HiApp/master/src/api/'
 
 function _param(obj = {}) {
     let _ = encodeURIComponent
