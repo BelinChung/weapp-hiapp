@@ -30,8 +30,4 @@
       <image class="wx-cell-arrow" src="../../assets/right-gray.png"></image>
     </view>
   </view>
-
-  <view class="sign-out-container">
-    <button type="warn" size="default" class="sign-out-btn"> Sign out </button>
-  </view>
 </view>
