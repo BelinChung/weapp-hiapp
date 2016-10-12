@@ -2,7 +2,7 @@
 [HiApp](https://github.com/BelinChung/HiApp) 微信小程序版
 
 ## Previews
-  ![Preview](https://github.com/BelinChung/wxapp-hiapp/blob/master/demo/demo_v0.1.gif)
+  ![Preview](https://github.com/BelinChung/wxapp-hiapp/blob/master/demo/demo_v0.2.gif)
 
 ## Setup
 
