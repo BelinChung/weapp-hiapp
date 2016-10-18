@@ -12,21 +12,21 @@ module.exports = {
     d_minutes = Math.round(d / 60)
     d_second = Math.round(d)
     if (d_days > 0 && d_days < 2) {
-      return d_days + i18n.global.day_ago
+      return `${d_days} days ago`
     } else if (d_days <= 0 && d_hours > 0) {
-      return d_hours + i18n.global.hour_ago
+      return `${d_hours} hours ago`
     } else if (d_hours <= 0 && d_minutes > 0) {
-      return d_minutes + i18n.global.minute_ago
+      return `${d_minutes} minutes ago`
     } else if (d_minutes <= 0 && d_second >= 0) {
-      return i18n.global.just_now
+      return 'Just now'
     } else {
       let s = new Date()
       s.setTime(ms)
-      return (s.getFullYear() + '-' + f(s.getMonth() + 1) + '-' + f(s.getDate()) + ' '+ f(s.getHours()) + ':'+ f(s.getMinutes()))
+      return [s.getFullYear(), s.getMonth() + 1, s.getDate()].map(this.formatNumber).join('/') + ' ' + [s.getHours(), s.getMinutes()].map(this.formatNumber).join(':')
     }
-
-    function f(n){
-      return n < 10 ? '0' + n : n
-    }
+  },
+  formatNumber(n) {
+    n = n.toString()
+    return n[1] ? n : `0${n}`
   }
 }
