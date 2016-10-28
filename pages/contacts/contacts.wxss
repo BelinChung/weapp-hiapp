@@ -1,7 +1,7 @@
 .contacts {
   justify-content: space-between;
   box-sizing: border-box;
-  padding-bottom: 30rpx;
+  height: 100%;
 }
 
 .header{

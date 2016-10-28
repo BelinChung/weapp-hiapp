@@ -88,3 +88,7 @@ view, scroll-view, input, text{
   flex: 1;
   width: initial;
 }
+
+.placeholder-class {
+  color: #808080;
+}
