@@ -1,6 +1,5 @@
 <scroll-view scroll-y="true" class="timeline">
-  <loading hidden="{{!loading}}">loading...</loading>
-  <view class="tweet-container" wx:for="{{timeline}}">
+  <view class="tweet-container" wx:for="{{timeline}}" wx:key="id">
     <view class="top-container flex-row">
       <image class="card-avatar" src="{{item.avatar}}"></image>                
       <view class="user-container">

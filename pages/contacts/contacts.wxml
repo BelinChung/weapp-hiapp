@@ -1,5 +1,4 @@
 <scroll-view scroll-y="true" class="contacts flex-column">
-  <loading hidden="{{!loading}}">loading...</loading>
   <block wx:for="{{contacts}}">
     <view class="header flex-row" wx:if="{{item.header}}">{{item.header}}</view>
     <view class="contact-card" data-name="{{item.nickname}}" bindtap="navToMessage">

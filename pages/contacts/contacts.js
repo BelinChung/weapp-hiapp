@@ -3,15 +3,15 @@ let ajax = require('../../network/ajax')
 
 Page({
   data:{
-    contacts: [],
-    loading: false  
+    contacts: [] 
   },
   onLoad() {
     this.getContacts()
   },
   getContacts() {
-    this.setData({
-      loading: true
+    wx.showToast({
+      title: 'loading...',
+      icon: 'loading'
     })
     ajax({
         url: 'contacts.json',
@@ -21,9 +21,7 @@ Page({
           })
         },
         complete: _ => {
-          this.setData({
-            loading: false
-          })
+          wx.hideToast()
         }
     })
   },

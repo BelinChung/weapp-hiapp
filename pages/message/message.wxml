@@ -1,5 +1,4 @@
 <view class="flex-column">
-  <loading hidden="{{!loading}}">loading...</loading>
   <!-- //TODO 这里 scroll-view 在 flex 布局下视乎有个 Bug. -->
   <scroll-view scroll-y="true" class="timeline flex-rest-height">
     <block wx:for="{{messages}}">

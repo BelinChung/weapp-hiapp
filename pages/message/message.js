@@ -23,7 +23,6 @@ Page({
   data: {
     userName: '',
     messages: [],
-    loading: false,
     inputValue: '',
     inputContent: {}
   },
@@ -43,8 +42,9 @@ Page({
     this.data.inputContent[e.currentTarget.id] = e.detail.value
   },
   getMessage() {
-    this.setData({
-      loading: true
+    wx.showToast({
+      title: 'loading...',
+      icon: 'loading'
     })
     ajax({
         url: 'message.json',
@@ -54,9 +54,7 @@ Page({
           })
         },
         complete: _ => {
-          this.setData({
-            loading: false
-          })
+          wx.hideToast()
         }
     })
   },
