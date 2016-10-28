@@ -1,4 +1,4 @@
-<scroll-view scroll-y="true" class="timeline">
+<scroll-view scroll-y="true" bindscrolltolower="scrollToLower" class="timeline">
   <view class="tweet-container" wx:for="{{timeline}}" wx:key="id">
     <view class="top-container flex-row">
       <image class="card-avatar" src="{{item.avatar}}"></image>                
