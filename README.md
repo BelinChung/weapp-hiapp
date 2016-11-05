@@ -1,15 +1,15 @@
-# wxapp-hiapp
+# weapp-hiapp
 [HiApp](https://github.com/BelinChung/HiApp) 微信小程序版
 
 ## Previews
-  ![Preview](https://github.com/BelinChung/wxapp-hiapp/blob/master/demo/demo_v0.2.gif)
+  ![Preview](https://github.com/BelinChung/weapp-hiapp/blob/master/demo/demo_v0.2.gif)
 
 ## Setup
 
 1. **Clone the repo**
 
   ```
-  $ git clone https://github.com/BelinChung/wxapp-hiapp.git
+  $ git clone https://github.com/BelinChung/weapp-hiapp.git
   ```
 
 2. **Import to Wechat DEV Tools**
@@ -18,4 +18,4 @@
 
 ## License
 
-Copyright (c) 2016 Belin Chung. MIT Licensed, see [LICENSE](https://github.com/BelinChung/wxapp-hiapp/blob/master/LICENSE) for details.
+Copyright (c) 2016 Belin Chung. MIT Licensed, see [LICENSE](https://github.com/BelinChung/weapp-hiapp/blob/master/LICENSE) for details.
