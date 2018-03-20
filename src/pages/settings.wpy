@@ -30,11 +30,11 @@
     </view>
 
     <view class="zan-panel">
-      <view class="zan-cell zan-cell--access">
+      <navigator class="zan-cell zan-cell--access" url="./about">
         <icon class="zan-cell__icon iconfont icon-about1"></icon>        
         <view class="zan-cell__bd">About</view>
         <view class="zan-cell__ft"></view>
-      </view>
+      </navigator>
     </view>
   </view>
 </template>

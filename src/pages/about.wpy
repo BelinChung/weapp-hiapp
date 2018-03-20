@@ -1,0 +1,84 @@
+<template>
+  <view class="container flex-column">
+    <view class="top-container flex-rest-height">
+      <view class="logo">
+        <image src="../assets/images/logo.png" class="logo-image"></image>
+      </view>
+      <view class="name">HiApp</view>
+      <view class="about">
+        <text class="about-text">GitHub: BelinChung/weapp-hiapp</text>
+        <text class="about-text">Email: BelinChung@gmail.com</text>
+        <text class="about-text">Twitter: @BelinChung</text>
+      </view>
+    </view>
+    <view class="bottom-container">Copyright © 2018 BelinChung.</view>
+  </view>
+</template>
+
+<style lang="less" scoped>
+.container{
+  color: #666;
+  height: 100%;
+}
+
+.logo {
+  width: 90px;
+  height: 90px;
+  border: 1px solid #dfdfdf;
+  border-radius: 5px;
+  background-color: #fff;
+  margin: 0 auto;
+  line-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.logo-image{
+  width: 75px;
+  height: 75px;
+}
+
+.name{
+  text-align: center;
+  font-size: 25px;
+  margin-top: 25px;
+}
+
+.about{
+  text-align: center;
+  margin-top: 40px;
+}
+
+.about-text{
+  margin-top: 10px;
+  display: block;
+  font-size: 14px;
+}
+
+.bottom-container{
+  font-size: 12px;
+  text-align: center;
+  padding: 15px 0;
+}
+</style>
+
+
+<script>
+import wepy from 'wepy'
+
+export default class About extends wepy.page {
+  config = {
+    navigationBarTitleText: 'About'
+  }
+
+  data = {}
+
+  methods = {}
+
+  events = {}
+
+  onLoad() {}
+}
+</script>
