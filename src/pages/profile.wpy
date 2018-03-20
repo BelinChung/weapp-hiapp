@@ -1,0 +1,75 @@
+<template>
+  <view class="container">
+    <view class="zan-panel">
+      <view class="zan-cell avatar-cell">       
+        <view class="zan-cell__bd">Avatar</view>
+        <view class="zan-cell__ft avatar-container">
+          <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+        </view>
+      </view>
+      <view class="zan-cell">    
+        <view class="zan-cell__bd">Nickname</view>
+        <view class="zan-cell__ft">{{userInfo.nickName}}</view>
+      </view>
+    </view>
+
+    <view class="zan-panel">
+      <view class="zan-cell">       
+        <view class="zan-cell__bd">Gender</view>
+        <view class="zan-cell__ft">{{gender}}</view>
+      </view>
+      <view class="zan-cell">      
+        <view class="zan-cell__bd">City</view>
+        <view class="zan-cell__ft">{{userInfo.province}} {{userInfo.city}}</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<style lang="less" scoped>
+.avatar-cell{
+  height: 70px;
+  .avatar-container{
+    display: flex;
+    align-items: center;
+    .avatar{
+      width: 50px;
+      height: 50px;
+      border-radius: 4px;
+    }
+  }
+}
+</style>
+
+
+<script>
+import wepy from 'wepy'
+
+export default class Profile extends wepy.page {
+  config = {
+    navigationBarTitleText: 'Profile'
+  }
+
+  data = {
+    userInfo: {}
+  }
+
+  computed = {
+    gender() {
+      const gender = parseInt(this.userInfo.gender)
+      return gender === 1 ? 'male' : gender === 0 ? 'female' : 'unknown'
+    }
+  }
+
+  methods = {}
+
+  events = {}
+
+  onLoad() {
+    this.$parent.getUserInfo().then(user => {
+      this.userInfo = user
+      this.$apply()
+    })
+  }
+}
+</script>

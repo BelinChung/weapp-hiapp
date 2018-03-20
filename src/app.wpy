@@ -21,7 +21,8 @@ export default class extends wepy.app {
     pages: [
       'pages/index',
       'pages/contacts',
-      'pages/settings'
+      'pages/settings',
+      'pages/profile'
     ],
     window: {
       backgroundColor: '#efeff4',
@@ -70,12 +71,15 @@ export default class extends wepy.app {
 
   getUserInfo() {
     if (this.globalData.userInfo) {
-      return this.globalData.userInfo
+      return new Promise((resolve, reject) => {
+        resolve(this.globalData.userInfo)
+      })
+    } else {
+      return wepy.getUserInfo().then(res => {
+        this.globalData.userInfo = res.userInfo
+        return res.userInfo
+      })
     }
-    return wepy.getUserInfo().then(res => {
-      this.globalData.userInfo = res.userInfo
-      return res.userInfo
-    })
   }
 }
 </script>

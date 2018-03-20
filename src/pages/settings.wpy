@@ -1,7 +1,7 @@
 <template>
   <view class="container">
     <view class="zan-panel">
-      <view class="zan-cell zan-cell--access user-info-cell">
+      <navigator class="zan-cell zan-cell--access user-info-cell" url="./profile">
         <view class="zan-cell__icon avatar-container">
           <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
         </view>        
@@ -10,7 +10,7 @@
           <view class="location">{{userInfo.province}} {{userInfo.city}}</view>
         </view>
         <view class="zan-cell__ft"></view>
-      </view>
+      </navigator>
     </view>
 
     <view class="zan-panel">
