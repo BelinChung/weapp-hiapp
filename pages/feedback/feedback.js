@@ -1,8 +1,0 @@
-Page({
-  onLoad() {
-    // TODO
-  },
-  formSubmit() {
-    
-  }
-})

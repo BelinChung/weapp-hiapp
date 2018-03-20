@@ -1,5 +1,0 @@
-@import "../../styles/card.wxss";
-
-.timeline{
-  height: 100%;
-}
