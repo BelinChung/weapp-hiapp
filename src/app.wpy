@@ -1,19 +1,15 @@
 <style lang='less'>
 @import "../node_modules/zanui-weapp/dist/index.wxss";
 @import "./assets/fonts/iconfont.less";
+@import "./assets/styles/app.less";
 @import "./assets/styles/utils.less";
 
 page {
-  min-height: 100%;
+  height: 100%;
   background-color: #efeff4;
 }
 .container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
+  width: 100%;
 }
 </style>
 

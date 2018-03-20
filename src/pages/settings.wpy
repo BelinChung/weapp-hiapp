@@ -1,8 +1,73 @@
 <template>
   <view class="container">
-    
+    <view class="zan-panel">
+      <view class="zan-cell zan-cell--access user-info-cell">
+        <view class="zan-cell__icon avatar-container">
+          <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+        </view>        
+        <view class="zan-cell__bd">
+          <view class="nickname">{{userInfo.nickName}}</view>
+          <view class="location">{{userInfo.province}} {{userInfo.city}}</view>
+        </view>
+        <view class="zan-cell__ft"></view>
+      </view>
+    </view>
+
+    <view class="zan-panel">
+      <view class="zan-cell zan-cell--access">
+        <icon class="zan-cell__icon iconfont icon-language"></icon>        
+        <view class="zan-cell__bd">Language</view>
+        <view class="zan-cell__ft"></view>
+      </view>
+    </view>
+
+    <view class="zan-panel">
+      <view class="zan-cell zan-cell--access">
+        <icon class="zan-cell__icon iconfont icon-feedback2"></icon>        
+        <view class="zan-cell__bd">Feedback</view>
+        <view class="zan-cell__ft"></view>
+      </view>
+    </view>
+
+    <view class="zan-panel">
+      <view class="zan-cell zan-cell--access">
+        <icon class="zan-cell__icon iconfont icon-about1"></icon>        
+        <view class="zan-cell__bd">About</view>
+        <view class="zan-cell__ft"></view>
+      </view>
+    </view>
   </view>
 </template>
+
+<style lang="less" scoped>
+.icon-language{
+  color: #09f;
+}
+.icon-feedback2{
+  color: #0c9;
+}
+.icon-about1{
+  color: #fc3;
+}
+.user-info-cell{
+  height: 70px;
+  .avatar-container{
+    display: flex;
+    align-items: center;
+    .avatar{
+      width: 50px;
+      height: 50px;
+      border-radius: 4px;
+    }
+  }
+  .location {
+    margin-top: 5px;
+    font-size: 13px;
+    color: #858585;
+  }
+}
+</style>
+
 
 <script>
 import wepy from 'wepy'
@@ -12,12 +77,21 @@ export default class Settings extends wepy.page {
     navigationBarTitleText: 'Settings'
   }
 
-  data = {}
+  data = {
+    userInfo: {
+      nickName: 'loading...'
+    }
+  }
 
   methods = {}
 
   events = {}
 
-  onLoad() {}
+  onLoad() {
+    this.$parent.getUserInfo().then(user => {
+      this.userInfo = user
+      this.$apply()
+    })
+  }
 }
 </script>
