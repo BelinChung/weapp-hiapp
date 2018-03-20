@@ -5,13 +5,13 @@
 
 ## Setup
 
-1. **Clone the repo**
+**1. Checkout Source Code**
 
   ```
   $ git clone https://github.com/BelinChung/weapp-hiapp.git
   ```
 
-2. **Dependencies**
+**2. Install Dependencies**
 
   项目使用了微信小程序组件化开发框架 `WePY` 进行开发，请先全局安装 `WePY`
 
@@ -26,11 +26,11 @@
   $ npm install
   ```
 
-3. **Build**
+**3. Build and Watch**
 
   项目根目录执行 `wepy build --watch`   
 
-4. **Import to Wechat DEV Tools**
+**4. Import to DEV Tools**
 
   把编译出的`dist`目录导入到微信开发者工具中即可
 
