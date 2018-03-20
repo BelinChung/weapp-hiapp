@@ -14,9 +14,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      counter: path.join(__dirname, 'src/components/counter'),
-      '@': path.join(__dirname, 'src'),
-      'zanui': path.join(__dirname, 'node_modules/zanui-weapp')
+      '@': path.join(__dirname, 'src')
     },
     aliasFields: ['wepy'],
     modules: ['node_modules']
