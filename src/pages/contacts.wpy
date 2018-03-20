@@ -1,0 +1,23 @@
+<template>
+  <view class="container">
+    
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Contacts extends wepy.page {
+  config = {
+    navigationBarTitleText: 'Contacts'
+  }
+
+  data = {}
+
+  methods = {}
+
+  events = {}
+
+  onLoad() {}
+}
+</script>

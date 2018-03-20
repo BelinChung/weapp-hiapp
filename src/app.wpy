@@ -1,0 +1,82 @@
+<style lang='less'>
+page {
+  min-height: 100%;
+  background-color: #efeff4;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+</style>
+
+<script>
+import wepy from 'wepy'
+
+export default class extends wepy.app {
+  config = {
+    pages: [
+      'pages/index',
+      'pages/contacts',
+      'pages/settings'
+    ],
+    window: {
+      backgroundColor: '#efeff4',
+      backgroundTextStyle: 'dark',
+      navigationBarBackgroundColor: '#ff9630',
+      navigationBarTitleText: 'HiApp',
+      navigationBarTextStyle: 'white'
+    },
+    tabBar: {
+      color: '#929292',
+      selectedColor: '#ff9630',
+      backgroundColor: '#f7f7f8',
+      borderStyle: 'white',
+      list: [{
+        pagePath: 'pages/index',
+        text: 'Home',
+        iconPath: 'assets/images/home-outline.png',
+        selectedIconPath: 'assets/images/home-selected.png'
+      }, {
+        pagePath: 'pages/contacts',
+        text: 'Contacts',
+        iconPath: 'assets/images/contacts-outline.png',
+        selectedIconPath: 'assets/images/contacts-selected.png'
+      }, {
+        pagePath: 'pages/settings',
+        text: 'Settings',
+        iconPath: 'assets/images/settings-outline.png',
+        selectedIconPath: 'assets/images/settings-selected.png'
+      }]
+    }
+  }
+
+  globalData = {
+    userInfo: null
+  }
+
+  constructor () {
+    super()
+    this.use('requestfix')
+  }
+
+  onLaunch() {
+  }
+
+  getUserInfo(cb) {
+    const that = this
+    if (this.globalData.userInfo) {
+      return this.globalData.userInfo
+    }
+    wepy.getUserInfo({
+      success (res) {
+        that.globalData.userInfo = res.userInfo
+        cb && cb(res.userInfo)
+      }
+    })
+  }
+}
+</script>

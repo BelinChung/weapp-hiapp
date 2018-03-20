@@ -1,0 +1,23 @@
+<template>
+  <view class="container">
+    
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Settings extends wepy.page {
+  config = {
+    navigationBarTitleText: 'Settings'
+  }
+
+  data = {}
+
+  methods = {}
+
+  events = {}
+
+  onLoad() {}
+}
+</script>
