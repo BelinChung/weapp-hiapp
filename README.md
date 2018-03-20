@@ -26,13 +26,17 @@
   $ npm install
   ```
 
-**3. Build and Watch**
+**3. Run for Dev**
 
-  项目根目录执行 `wepy build --watch`   
+  项目根目录执行 `npm run dev`   
 
 **4. Import to DEV Tools**
 
   把编译出的`dist`目录导入到微信开发者工具中即可
+
+**5. Build for Prod**
+
+  项目根目录执行 `npm run build`
 
 ## Tips
 
