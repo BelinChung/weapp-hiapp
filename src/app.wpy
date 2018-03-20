@@ -1,4 +1,8 @@
 <style lang='less'>
+@import "../node_modules/zanui-weapp/dist/index.wxss";
+@import "./assets/fonts/iconfont.less";
+@import "./assets/styles/utils.less";
+
 page {
   min-height: 100%;
   background-color: #efeff4;
@@ -60,22 +64,21 @@ export default class extends wepy.app {
 
   constructor () {
     super()
+    // 开启2个中间件
     this.use('requestfix')
+    this.use('promisify')
   }
 
   onLaunch() {
   }
 
-  getUserInfo(cb) {
-    const that = this
+  getUserInfo() {
     if (this.globalData.userInfo) {
       return this.globalData.userInfo
     }
-    wepy.getUserInfo({
-      success (res) {
-        that.globalData.userInfo = res.userInfo
-        cb && cb(res.userInfo)
-      }
+    return wepy.getUserInfo().then(res => {
+      this.globalData.userInfo = res.userInfo
+      return res.userInfo
     })
   }
 }
