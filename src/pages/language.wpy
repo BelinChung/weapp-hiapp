@@ -1,0 +1,53 @@
+<template>
+  <import src="../zanui/select/index.wxml" />
+
+  <view class="container">
+     <view class="zan-panel-title">Language (WIP)</view>
+    <view class="zan-panel">
+      <template is="zan-select" data="{{ items: languages, checkedValue: language, componentId: 'language', activeColor }}" ></template>      
+    </view>  
+  </view>
+</template>
+
+<script>
+/**
+ * 切换语言/i18n 功能暂时未实现
+ * 还需要进行对应的技术调研
+ * 本模块主要是示例使用 mixin 来调用 zanui 组件的方法
+ */
+import wepy from 'wepy'
+import mixin from 'mixin-decorator'
+import { Select } from '@/zanui/index'
+
+@mixin(Select)
+export default class Language extends wepy.page {
+  config = {
+    navigationBarTitleText: 'Language'
+  }
+
+  data = {
+    languages: [{
+      padding: 0,
+      value: 'zh-cn',
+      name: '简体中文',
+    }, {
+      padding: 0,
+      value: 'en-us',
+      name: 'English',
+    }],
+    language: 'en-us',
+    activeColor: '#ff9630'
+  }
+
+  methods = {
+  }
+
+  events = {}
+
+  onLoad() {}
+
+  handleZanSelectChange({ componentId, value }) {
+    this.language = value
+  }
+}
+</script>

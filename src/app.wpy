@@ -1,5 +1,5 @@
 <style lang='less'>
-@import "../node_modules/zanui-weapp/dist/index.wxss";
+@import "./zanui/index.wxss";
 @import "./assets/fonts/iconfont.less";
 @import "./assets/styles/app.less";
 @import "./assets/styles/utils.less";
@@ -23,7 +23,8 @@ export default class extends wepy.app {
       'pages/contacts',
       'pages/settings',
       'pages/profile',
-      'pages/about'
+      'pages/about',
+      'pages/language'
     ],
     window: {
       backgroundColor: '#efeff4',

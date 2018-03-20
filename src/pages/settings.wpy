@@ -14,11 +14,11 @@
     </view>
 
     <view class="zan-panel">
-      <view class="zan-cell zan-cell--access">
+      <navigator class="zan-cell zan-cell--access" url="./language">
         <icon class="zan-cell__icon iconfont icon-language"></icon>        
         <view class="zan-cell__bd">Language</view>
         <view class="zan-cell__ft"></view>
-      </view>
+      </navigator>
     </view>
 
     <view class="zan-panel">
