@@ -1,7 +1,9 @@
 # weapp-hiapp
 [HiApp](https://github.com/BelinChung/HiApp) 微信小程序版
 
-## Previews
+## Preview
+
+<img src="https://plus.hiliaox.com/static/image/weapp_qrcode.jpg" width="150px">
 
 ## Setup
 
