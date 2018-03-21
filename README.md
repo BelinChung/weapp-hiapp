@@ -5,6 +5,8 @@
 
 <img src="https://plus.hiliaox.com/static/image/weapp_qrcode.jpg" width="150px">
 
+[Tip] 该小程序基于本项目进行开发，是实际运营项目，非 demo 项目。除去除即时通讯模块外，还根据实际业务增加了其他需求，仅供参考。请按照下方步骤在本地运行预览实际效果，或在线查看 [WebApp版](https://hi.dearb.me/build)
+
 ## Setup
 
 **1. Checkout Source Code**
