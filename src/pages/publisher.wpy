@@ -1,0 +1,38 @@
+<template>
+  <view class="container">
+    <editor :placeholder="editorPlaceholder" 
+            :content="editorContent" 
+            @submitForm.user="submitForm"></editor>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import Editor from '@/components/editor'
+
+export default class Publisher extends wepy.page {
+  config = {
+    navigationBarTitleText: 'Publisher'
+  }
+
+  data = {
+    editorPlaceholder: 'what\'s new with you.',
+    editorContent: ''
+  }
+
+  methods = {
+    submitForm() {
+      console.log(this.editorContent)
+      wx.navigateBack()
+    }
+  }
+
+  events = {}
+
+  onLoad() {}
+
+  components = {
+    editor: Editor
+  }
+}
+</script>
