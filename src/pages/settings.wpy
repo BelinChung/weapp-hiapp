@@ -22,11 +22,11 @@
     </view>
 
     <view class="zan-panel">
-      <view class="zan-cell zan-cell--access">
+      <navigator class="zan-cell zan-cell--access" url="./feedback">
         <icon class="zan-cell__icon iconfont icon-feedback2"></icon>        
         <view class="zan-cell__bd">Feedback</view>
         <view class="zan-cell__ft"></view>
-      </view>
+      </navigator>
     </view>
 
     <view class="zan-panel">

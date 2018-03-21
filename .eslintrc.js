@@ -31,4 +31,7 @@ module.exports = {
       "ignoreReadBeforeAssign": false
     }]
   },
+  globals: {
+    wx: true
+  }
 }

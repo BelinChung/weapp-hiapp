@@ -1,0 +1,43 @@
+<template>
+  <view class="container">
+    <editor :placeholder="editorPlaceholder" 
+            :content="editorContent" 
+            :enableTools="editorEnableTools"
+            @submitForm.user="submitForm"></editor>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import Editor from '@/components/editor'
+
+export default class Feedback extends wepy.page {
+  config = {
+    navigationBarTitleText: 'Feedback'
+  }
+
+  data = {
+    editorPlaceholder: 'Hi, any suggestion to tell us?',
+    editorContent: '',
+    editorEnableTools: ''
+  }
+
+  methods = {
+    submitForm() {
+      console.log(this.editorContent)
+      wx.showModal({
+        title: 'message',
+        content: 'Thanks for your feedback!'
+      })
+    }
+  }
+
+  events = {}
+
+  onLoad() {}
+
+  components = {
+    editor: Editor
+  }
+}
+</script>

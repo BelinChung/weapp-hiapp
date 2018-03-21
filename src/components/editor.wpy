@@ -1,0 +1,127 @@
+<template>
+  <view class="editor-comp">
+    <form bindsubmit="formSubmit" report-submit>
+      <textarea name="content" placeholder="{{placeholder}}" class="textarea" bindinput="contentChange"/>
+      <view class="tools flex-row">
+        <view class="flex-reset-width">
+          <view class="tool" wx:if="{{enableLocation}}"><icon class="iconfont icon-location"></icon></view>
+        </view>
+        <button form-type="submit" class="submit-btn">submit</button>
+      </view>
+      <view class="uploader" wx:if="{{enableUploader}}">
+        <image src="../assets/images/plus.png"></image>
+      </view>
+    </form>
+  </view>
+</template>
+
+<style lang="less" scoped>
+.editor-comp {
+  .textarea{
+    width: 100%;
+    height: 150px;
+    font-size: 15px;
+    border: none;
+    color: #444;
+    margin: 0;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: #fff;
+  }
+  .tools{
+    width: 100%;
+    height: 40px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #dadada;
+    border-top: 1px solid #dadada;
+    align-items: center;
+    .tool{
+      width: 50px;
+      height: 100%;
+      text-align: center;
+      > icon {
+        font-size: 24px;
+        color: #666;
+      }
+    }
+    .submit-btn{
+      background-color: #ff9630;
+      color: #fff;
+      font-size: 14px;
+      height: 30px;
+      line-height: 30px;
+      border-color: none;
+      border-radius: 5px;
+      margin-right: 10px;
+      padding: 0 10px;
+      &::after {
+        display: none;
+      }
+    }
+  }
+  .uploader{
+    width: 80px;
+    height: 80px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border: 1rpx dashed #ccc;
+    border-radius:5px;
+    margin:20px 0 0 20px;
+    > image {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}
+</style>
+
+<script>
+import wepy from 'wepy'
+
+export default class Editor extends wepy.component {
+  props = {
+    content: {
+      type: String,
+      twoWay: true
+    },
+    imageKey: {
+      type: String,
+      default: '',
+      twoWay: true
+    },
+    enableTools: {
+      type: String,
+      default: 'location,uploader'
+    },
+    placeholder: {
+      type: String,
+      default: ''
+    }
+  }
+
+  computed = {
+    enableLocation() {
+      return this.isEnableTool('location')
+    },
+    enableUploader() {
+      return this.isEnableTool('uploader')
+    }
+  }
+
+  methods = {
+    contentChange(e) {
+      const { value } = e.detail
+      this.content = value
+    },
+    formSubmit() {
+      this.$emit('submitForm')
+    }
+  }
+
+  isEnableTool(tool) {
+    const tools = this.enableTools.split(',')
+    return ~tools.indexOf(tool)
+  }
+}
+</script>

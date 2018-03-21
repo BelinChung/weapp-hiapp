@@ -2,7 +2,7 @@
   <import src="../zanui/select/index.wxml" />
 
   <view class="container">
-     <view class="zan-panel-title">Language (WIP)</view>
+    <view class="zan-panel-title">Language (WIP)</view>
     <view class="zan-panel">
       <template is="zan-select" data="{{ items: languages, checkedValue: language, componentId: 'language', activeColor }}" ></template>      
     </view>  

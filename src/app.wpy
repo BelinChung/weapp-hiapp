@@ -24,7 +24,8 @@ export default class extends wepy.app {
       'pages/settings',
       'pages/profile',
       'pages/about',
-      'pages/language'
+      'pages/language',
+      'pages/feedback'
     ],
     window: {
       backgroundColor: '#efeff4',
