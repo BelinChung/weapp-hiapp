@@ -1,5 +1,9 @@
 <template>
   <view class="container">
+    <repeat for="{{timeline}}" key="index" index="index" item="item">
+      <view>{{item.content}}</view>
+    </repeat>
+    <button @tap="addTimeline">新增</button>
     <navigator url="./publisher" class="publisher-btn">
       <image src="../assets/images/feather.png"></image>
     </navigator>
@@ -29,11 +33,27 @@
 
 <script>
 import wepy from 'wepy'
+import { connect } from 'wepy-redux'
+import { initTimeline } from '@/store/actions'
+
+@connect({
+  timeline(state) {
+    return state.home.timeline
+  }
+}, {
+  initTimeline
+})
 
 export default class Index extends wepy.page {
   data = {}
 
-  methods = {}
+  methods = {
+    addTimeline() {
+      this.methods.initTimeline([{
+        content: 'xxxxx'
+      }])
+    }
+  }
 
   events = {}
 
