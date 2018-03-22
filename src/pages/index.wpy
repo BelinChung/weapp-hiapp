@@ -1,9 +1,8 @@
 <template>
   <view class="container">
     <repeat for="{{timeline}}" key="index" index="index" item="item">
-      <view>{{item.content}}</view>
+      <card :post.sync="item"></card>
     </repeat>
-    <button @tap="addTimeline">新增</button>
     <navigator url="./publisher" class="publisher-btn">
       <image src="../assets/images/feather.png"></image>
     </navigator>
@@ -33,8 +32,12 @@
 
 <script>
 import wepy from 'wepy'
+import res from '@/network'
+import Card from '@/components/card'
 import { connect } from 'wepy-redux'
 import { initTimeline } from '@/store/actions'
+import { getRemoteAvatar } from '@/utils'
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 
 @connect({
   timeline(state) {
@@ -48,15 +51,35 @@ export default class Index extends wepy.page {
   data = {}
 
   methods = {
-    addTimeline() {
-      this.methods.initTimeline([{
-        content: 'xxxxx'
-      }])
-    }
   }
 
   events = {}
 
-  onLoad() {}
+  onLoad() {
+    this.getTimeline()
+  }
+
+  getTimeline() {
+    wx.showToast({
+      title: 'loading...',
+      icon: 'loading'
+    })
+    res.get('/timeline.json').then(res => {
+      this.methods.initTimeline(this.formatTimeline(res.data))
+    }).then(res => wx.hideToast())
+  }
+
+  formatTimeline(items) {
+    items.forEach(item => {
+      item.avatarUrl = getRemoteAvatar(item.avatar)
+      item.time = distanceInWordsToNow(item.created_at * 1000, { addSuffix: true })
+      return item
+    })
+    return items
+  }
+
+  components = {
+    card: Card
+  }
 }
 </script>

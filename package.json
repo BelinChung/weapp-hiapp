@@ -27,13 +27,14 @@
   },
   "homepage": "https://hi.dearb.me/",
   "dependencies": {
+    "date-fns": "^1.29.0",
     "mixin-decorator": "^1.0.5",
-    "wepy": "^1.7.1",
-    "wepy-async-function": "^1.4.4",
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
     "redux-promise": "^0.5.3",
-    "wepy-redux": "^1.5.3"
+    "wepy": "^1.7.1",
+    "wepy-async-function": "^1.4.4",
+    "wepy-redux": "^1.5.6"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.1",

@@ -15,9 +15,11 @@ page {
 
 <script>
 import wepy from 'wepy'
-
-import { setStore } from 'wepy-redux'
+import req from '@/network'
 import configStore from './store'
+import * as interceptor from '@/network/interceptor'
+import { setStore } from 'wepy-redux'
+import { baseUrl } from '@/config'
 
 const store = configStore()
 setStore(store)
@@ -77,6 +79,7 @@ export default class extends wepy.app {
   }
 
   onLaunch() {
+    req.baseUrl(baseUrl).interceptor(interceptor.request, interceptor.response)
   }
 
   getUserInfo() {
