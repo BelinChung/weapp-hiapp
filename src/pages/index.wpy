@@ -32,10 +32,10 @@
 
 <script>
 import wepy from 'wepy'
-import res from '@/network'
+import req from '@/network'
 import Card from '@/components/card'
 import { connect } from 'wepy-redux'
-import { initTimeline, prependTimeline } from '@/store/actions'
+import { initTimeline, prependTimeline, appendTimeline } from '@/store/actions'
 import { getRemoteAvatar } from '@/utils'
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 
@@ -45,7 +45,8 @@ import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
   }
 }, {
   initTimeline,
-  prependTimeline
+  prependTimeline,
+  appendTimeline
 })
 
 export default class Index extends wepy.page {
@@ -54,6 +55,8 @@ export default class Index extends wepy.page {
   }
 
   refreshing = false
+  loadingMore = false
+  loadedEnd = false
 
   methods = {
   }
@@ -69,7 +72,7 @@ export default class Index extends wepy.page {
       title: 'loading...',
       icon: 'loading'
     })
-    res.get('/timeline.json').then(res => {
+    req.get('/timeline.json').then(res => {
       this.methods.initTimeline(this.formatTimeline(res.data))
     }).then(res => wx.hideToast())
   }
@@ -78,7 +81,7 @@ export default class Index extends wepy.page {
     if (this.refreshing) return false
 
     this.refreshing = true
-    res.get('/refresh_timeline.json').then(res => {
+    req.get('/refresh_timeline.json').then(res => {
       if (parseInt(this.timeline[0].id) === 48) {
         // this.$emit('show-tip')
       } else {
@@ -88,6 +91,26 @@ export default class Index extends wepy.page {
       this.refreshing = false
       wx.stopPullDownRefresh()
     })
+  }
+
+  onReachBottom() {
+    if (this.loadingMore || this.loadedEnd) return false
+
+    this.loadingMore = true
+    wx.showToast({
+      title: 'loading...',
+      icon: 'loading'
+    })
+    req.get('/more_timeline.json').then(res => {
+      const id = parseInt(this.timeline[this.timeline.length - 1].id)
+      if (id === 24) {
+        this.loadedEnd = true
+      } else {
+        const timeline = res.data
+        this.methods.appendTimeline(timeline)
+      }
+      this.loadingMore = false
+    }).then(res => wx.hideToast())
   }
 
   formatTimeline(items) {
