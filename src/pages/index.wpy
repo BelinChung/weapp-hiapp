@@ -35,7 +35,7 @@ import wepy from 'wepy'
 import res from '@/network'
 import Card from '@/components/card'
 import { connect } from 'wepy-redux'
-import { initTimeline } from '@/store/actions'
+import { initTimeline, prependTimeline } from '@/store/actions'
 import { getRemoteAvatar } from '@/utils'
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 
@@ -44,11 +44,16 @@ import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
     return state.home.timeline
   }
 }, {
-  initTimeline
+  initTimeline,
+  prependTimeline
 })
 
 export default class Index extends wepy.page {
-  data = {}
+  config = {
+    enablePullDownRefresh: true
+  }
+
+  refreshing = false
 
   methods = {
   }
@@ -67,6 +72,22 @@ export default class Index extends wepy.page {
     res.get('/timeline.json').then(res => {
       this.methods.initTimeline(this.formatTimeline(res.data))
     }).then(res => wx.hideToast())
+  }
+
+  onPullDownRefresh() {
+    if (this.refreshing) return false
+
+    this.refreshing = true
+    res.get('/refresh_timeline.json').then(res => {
+      if (parseInt(this.timeline[0].id) === 48) {
+        // this.$emit('show-tip')
+      } else {
+        const timeline = res.data
+        this.methods.prependTimeline(timeline)
+      }
+      this.refreshing = false
+      wx.stopPullDownRefresh()
+    })
   }
 
   formatTimeline(items) {
