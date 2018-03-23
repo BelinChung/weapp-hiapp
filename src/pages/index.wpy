@@ -36,8 +36,7 @@ import req from '@/network'
 import Card from '@/components/card'
 import { connect } from 'wepy-redux'
 import { initTimeline, prependTimeline, appendTimeline } from '@/store/actions'
-import { getRemoteAvatar } from '@/utils'
-import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
+import { formatTimeline } from '@/utils'
 
 @connect({
   timeline(state) {
@@ -73,7 +72,7 @@ export default class Index extends wepy.page {
       icon: 'loading'
     })
     req.get('/timeline.json').then(res => {
-      this.methods.initTimeline(this.formatTimeline(res.data))
+      this.methods.initTimeline(formatTimeline(res.data))
     }).then(res => wx.hideToast())
   }
 
@@ -85,7 +84,7 @@ export default class Index extends wepy.page {
       if (parseInt(this.timeline[0].id) === 48) {
         // this.$emit('show-tip')
       } else {
-        const timeline = res.data
+        const timeline = formatTimeline(res.data)
         this.methods.prependTimeline(timeline)
       }
       this.refreshing = false
@@ -106,20 +105,11 @@ export default class Index extends wepy.page {
       if (id === 24) {
         this.loadedEnd = true
       } else {
-        const timeline = res.data
+        const timeline = formatTimeline(res.data)
         this.methods.appendTimeline(timeline)
       }
       this.loadingMore = false
     }).then(res => wx.hideToast())
-  }
-
-  formatTimeline(items) {
-    items.forEach(item => {
-      item.avatarUrl = getRemoteAvatar(item.avatar)
-      item.time = distanceInWordsToNow(item.created_at * 1000, { addSuffix: true })
-      return item
-    })
-    return items
   }
 
   components = {
