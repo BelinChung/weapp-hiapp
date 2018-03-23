@@ -14,14 +14,14 @@
              src="{{post.original_pic}}" 
              mode="widthFix" 
              lazy-load="true"
-             catchtap="previewImage"></image>
+             @tap.stop="previewImage"></image>
     </view>
-    <view class="footer flex-row">
-      <view class="tool tool-border flex-rest-width">
+    <view class="footer flex-row {{ bottomToolbar ? 'bottom' : '' }}">
+      <view class="tool tool-border flex-rest-width" @tap.stop="navToComment">
         <view class="iconfont icon-comment"></view>
         <view class="text">{{post.comment_count ? post.comment_count : 'Comment'}}</view>
       </view>  
-      <view class="tool flex-rest-width">
+      <view class="tool flex-rest-width" @tap.stop="toggleLike">
         <view class="iconfont icon-like"></view>
         <view class="text">{{post.like_count ? post.like_count : 'Like'}}</view>
       </view>
@@ -72,11 +72,26 @@
     }
   }
   .footer {
-    min-height: 35px;
     padding: 0;
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid #e1e1e1;
+    background:#fff;
+    &.bottom {
+      position: fixed;
+      bottom: 0;
+      width: 100%;  
+      .tool {
+        line-height: 44px;
+        height: 44px;
+        .iconfont {
+          font-size: 18px;
+        }
+        .text {
+          font-size: 15px;
+        }
+      }    
+    }
     .tool {
       line-height: 35px;
       height: 35px;
@@ -114,13 +129,21 @@ export default class Card extends wepy.component {
     post: {
       type: Object
     },
-    showToolbar: {
+    bottomToolbar: {
       type: Boolean,
-      default: true
+      default: false
     }
   }
 
   methods = {
+    navToComment() {
+      //
+    },
+
+    toggleLike() {
+      //
+    },
+
     previewImage() {
       wx.previewImage({
         current: '',

@@ -1,7 +1,9 @@
 <template>
   <view class="container">
     <repeat for="{{timeline}}" key="index" index="index" item="item">
-      <card :post.sync="item"></card>
+      <view @tap="navToPost({{item}})">
+        <card :post.sync="item"></card>        
+      </view>
     </repeat>
     <navigator url="./publisher" class="publisher-btn">
       <image src="../assets/images/feather.png"></image>
@@ -58,6 +60,10 @@ export default class Index extends wepy.page {
   loadedEnd = false
 
   methods = {
+    navToPost(post) {
+      this.$preload('post', post)
+      this.$navigate('./post', { id: post.id })
+    }
   }
 
   events = {}

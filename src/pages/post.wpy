@@ -1,0 +1,132 @@
+<template>
+  <view class="container">
+    <card :post.sync="post" :bottomToolbar="enableBottomToolbar"></card>
+    <view class="comments">
+      <view class="title">Comment</view>
+      <view class="clist">
+        <view wx:if="{{ comments.length }}">
+          <repeat for="{{comments}}" key="index" index="index" item="item">
+            <view class="comment flex-row">
+              <image src="{{item.avatarUrl}}" class="avatar"></image>
+              <view class="detail flex-rest-width">
+                <view class="name">{{item.name}}</view>
+                <view class="time">{{item.time}}</view>
+                <view class="text">{{item.text}}</view>
+              </view>
+            </view>
+          </repeat>
+        </view>
+        <view class="empty-content" wx:else>
+          <icon class="iconfont icon-wujieguoyangshi"></icon>
+          <view class="text">Empty Container</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<style lang="less" scoped>
+.comments {
+  background-color: #fff;
+  border-top: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
+  margin-bottom: 15px;
+  .title {
+    height: 35px;
+    line-height: 35px;
+    padding: 0 10px;
+    font-size: 13px;
+  }
+  .comment {
+    border-top: 1px solid #dadada;
+    padding: 10px;
+    font-size: 14px;
+    .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 30px;
+    }
+    .detail {
+      margin-left: 8px;
+      .name {
+        font-size: 13px;
+        color: #333;
+      }
+      .time {
+        font-size: 11px;
+        color: #929292;
+        margin-bottom: 2px;
+      }
+      .text {
+        line-height: 20px;
+        color: #5d5d5d;
+        word-wrap: break-word; 
+        word-break: normal; 
+      }
+    }
+  }
+}
+</style>
+
+<script>
+import wepy from 'wepy'
+import req from '@/network'
+import Card from '@/components/card'
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
+import { getRemoteAvatar } from '@/utils'
+
+export default class Post extends wepy.page {
+  config = {
+    navigationBarTitleText: 'Post'
+  }
+
+  data = {
+    post: {},
+    enableBottomToolbar: true,
+    comments: []
+  }
+
+  methods = {}
+
+  events = {}
+
+  onLoad(params, data) {
+    // 尝试先去 preload 中获取 post 数据，没有的话通过接口获取
+    if (
+      data &&
+      data.hasOwnProperty('preload') &&
+      data.preload.hasOwnProperty('post')
+    ) {
+      this.post = data.preload.post
+    } else {
+      // 通过接口获取 post
+      // this.post = await req.post('/post.json', { id: params.id })
+    }
+    // 请求该 post 的评论列表
+    this.getComments()
+  }
+
+  getComments() {
+    const random = Math.floor(Math.random() * 2)
+    if (!random) return []
+    req.get('/comments.json').then(res => {
+      const comments = this.formatComments(res.data)
+      this.comments = comments
+      this.$apply()
+    })
+  }
+
+  formatComments(items) {
+    items.forEach(item => {
+      item.avatarUrl = getRemoteAvatar(item.avatar)
+      item.time = distanceInWordsToNow(item.time * 1000, { addSuffix: true })
+      return item
+    })
+    return items
+  }
+
+  components = {
+    card: Card
+  }
+}
+</script>

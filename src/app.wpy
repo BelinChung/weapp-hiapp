@@ -34,7 +34,8 @@ export default class extends wepy.app {
       'pages/about',
       'pages/language',
       'pages/feedback',
-      'pages/publisher'
+      'pages/publisher',
+      'pages/post'
     ],
     window: {
       backgroundColor: '#efeff4',
