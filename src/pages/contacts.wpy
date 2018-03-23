@@ -1,23 +1,76 @@
 <template>
   <view class="container">
-    
+    <repeat for="{{contacts}}" key="index" index="index" item="list">
+      <view class="sep">{{index}}</view>
+      <view class="zan-panel">
+        <repeat for="{{list}}" key="index" index="index" item="item">
+          <view class="zan-cell"> 
+            <image class="zan-cell__icon avatar" src="{{item.avatarUrl}}"></image>
+            <view class="zan-cell__bd">{{item.nickname}}</view>
+            <view class="zan-cell__ft">{{item.location}}</view>
+          </view>
+        </repeat>            
+      </view>      
+    </repeat>
   </view>
 </template>
 
+<style lang="less" scoped>
+.container {
+  margin: 10px 0 20px 0;
+  .zan-panel {
+    margin-top: 0;
+    .avatar{
+      width: 35px;
+      height: 35px;
+      border-radius: 5px;
+      margin: 8px 0;
+      margin-right:10px;
+    }
+  }
+  .sep {
+    color: #7e7d83;
+    font-size: 13px;
+    margin: 5px;
+    padding-left: 10px;
+  }
+}
+</style>
+
 <script>
 import wepy from 'wepy'
+import req from '@/network'
+import groupBy from 'lodash/groupBy'
+import { getRemoteAvatar } from '@/utils'
 
 export default class Contacts extends wepy.page {
   config = {
     navigationBarTitleText: 'Contacts'
   }
 
-  data = {}
+  data = {
+    contacts: null,
+    total: 0
+  }
 
   methods = {}
 
   events = {}
 
-  onLoad() {}
+  onLoad() {
+    this.getContacts()
+  }
+
+  getContacts() {
+    req.get('/contacts.json').then(res => {
+      const contacts = res.data
+      contacts.forEach(contact => {
+        contact.avatarUrl = getRemoteAvatar(contact.avatar)
+      })
+      this.contacts = groupBy(contacts, 'header')
+      this.total = contacts.length
+      this.$apply()
+    })
+  }
 }
 </script>
