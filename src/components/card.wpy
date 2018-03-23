@@ -17,7 +17,7 @@
              @tap.stop="previewImage"></image>
     </view>
     <view class="footer flex-row {{ bottomToolbar ? 'bottom' : '' }}">
-      <view class="tool tool-border flex-rest-width" @tap.stop="navToComment">
+      <view class="tool tool-border flex-rest-width" @tap.stop="navToComment({{post}})">
         <view class="iconfont icon-comment"></view>
         <view class="text">{{post.comment_count ? post.comment_count : 'Comment'}}</view>
       </view>  
@@ -136,8 +136,10 @@ export default class Card extends wepy.component {
   }
 
   methods = {
-    navToComment() {
-      //
+    navToComment(post) {
+      wx.navigateTo({
+        url: `./comment?id=${post.id}`
+      })
     },
 
     toggleLike() {

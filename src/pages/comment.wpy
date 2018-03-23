@@ -1,0 +1,42 @@
+<template>
+  <view class="container">
+    <editor :placeholder="editorPlaceholder" 
+            :content="editorContent" 
+            :enableTools="editorEnableTools"
+            @submitForm.user="submitForm"></editor>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import Editor from '@/components/editor'
+
+export default class Comment extends wepy.page {
+  config = {
+    navigationBarTitleText: 'Comment'
+  }
+
+  data = {
+    editorPlaceholder: 'write a comment...',
+    editorContent: '',
+    editorEnableTools: ''
+  }
+
+  methods = {
+    submitForm() {
+      console.log(this.editorContent)
+      wx.navigateBack()
+    }
+  }
+
+  events = {}
+
+  onLoad(params) {
+    console.log(params)
+  }
+
+  components = {
+    editor: Editor
+  }
+}
+</script>
