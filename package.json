@@ -28,7 +28,7 @@
   "homepage": "https://hi.dearb.me/",
   "dependencies": {
     "date-fns": "^1.29.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "mixin-decorator": "^1.0.5",
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
